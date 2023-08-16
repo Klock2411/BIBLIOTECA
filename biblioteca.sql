@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
--- https://www.phpmyadmin.net/
+-- version 4.5.4.1
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Tempo de geração: 07-Mar-2023 às 22:37
--- Versão do servidor: 10.4.22-MariaDB
--- versão do PHP: 8.1.1
+-- Host: localhost
+-- Generation Time: 16-Ago-2023 às 11:06
+-- Versão do servidor: 5.7.11
+-- PHP Version: 5.6.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -18,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `biblioteca`
+-- Database: `biblioteca`
 --
 
 -- --------------------------------------------------------
@@ -92,13 +91,7 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`id`, `nome`) VALUES
-(1, 'Gibi'),
-(2, 'Romance'),
-(3, 'Ação'),
-(4, 'Ficção'),
-(5, 'História'),
-(7, 'Programação'),
-(8, 'WEB Design');
+(1, 'angustia');
 
 -- --------------------------------------------------------
 
@@ -128,7 +121,7 @@ CREATE TABLE `config` (
 --
 
 INSERT INTO `config` (`nome`, `email`, `telefone`, `endereco`, `instagram`, `logo`, `icone`, `logo_rel`, `id`, `marca_dagua`, `dias_entrega`, `instancia_api`, `token_api`, `api_whatsapp`) VALUES
-('Biblioteca Freitas', 'contato@hugocursos.com.br', '(31) 97527-5084', 'Rua X Número 150 - Bairro Centro Belo Horizonte - MG', '', 'logo.png', 'icone.png', 'logo.jpg', 1, 'Sim', 5, 'NOS13L97', '213E3-C1W-555SW', 'Sim');
+('BOOK.exe', 'contato@hugocursos.com.br', '(47) 99999-9999', 'Rua X Número 150 - Itajaí S ', '', 'logo.png', 'icone.png', 'logo.jpg', 1, 'Não', 5, 'NOS13L97', '213E3-C1W-555SW', 'Sim');
 
 -- --------------------------------------------------------
 
@@ -209,9 +202,11 @@ INSERT INTO `emprestimos` (`id`, `livro`, `leitor`, `data_emprestimo`, `data_dev
 (40, 7, 8, '2023-03-07', '2023-03-07', 'aaaaaaaaaaaaa', 1, 'Sim', '33NJ0P02F5'),
 (41, 7, 8, '2023-03-07', '2023-03-07', '', 1, 'Sim', '5NC0J0IA74'),
 (42, 42, 8, '2023-03-07', '2023-03-07', '', 1, 'Sim', '257WZ1Q9W1'),
-(43, 41, 2, '2023-03-07', '2023-03-12', '', 1, 'Não', 'A0A3HROV21'),
+(43, 41, 2, '2023-03-07', '2023-08-03', '', 1, 'Sim', 'A0A3HROV21'),
 (44, 42, 9, '2023-03-07', '2023-03-07', '', 1, 'Sim', '0O0GNW020L'),
-(45, 44, 9, '2023-03-07', '2023-03-07', '', 1, 'Sim', 'Q650U0K3CG');
+(45, 44, 9, '2023-03-07', '2023-03-07', '', 1, 'Sim', 'Q650U0K3CG'),
+(46, 2, 1, '2023-08-03', '2023-08-08', 'sada', 1, 'Não', ''),
+(47, 3, 2, '2023-08-03', '2023-08-03', '', 1, 'Sim', '');
 
 -- --------------------------------------------------------
 
@@ -255,10 +250,9 @@ CREATE TABLE `leitores` (
 --
 
 INSERT INTO `leitores` (`id`, `nome`, `telefone`, `cpf`, `endereco`, `data_cad`, `ativo`, `obs`) VALUES
-(1, 'Leitor 1', '(00) 00000-0000', '000.000.000-00', 'Rua 1', '2023-02-28', 'Sim', ''),
-(2, 'Leitor 2', '(22) 22222-2222', '222.222.222-22', 'Rua 2', '2023-02-28', 'Sim', 'Este Leitor está entregando com atraso todos os livros.'),
-(8, 'Hugo Leitor', '(31) 97527-5084', '000.000.000-01', 'Rua 5', '2023-03-07', 'Sim', 'Obs teste'),
-(9, 'Leitor 3', '(05) 00000-0000', '100.000.000-00', 'Rua 5', '2023-03-07', 'Sim', '');
+(1, 'Leitor 1', '(99) 99999-9999', '1', 'sla', '2023-08-15', 'Sim', 'a'),
+(2, 'Leitor 2', '(88) 88888-8888', '2', 'fsafa', '2023-08-15', 'Sim', 'b'),
+(3, 'leitor 3', '(77) 77777-7777', '3', 'ex', '2023-08-15', 'Sim', 'surfistinha');
 
 -- --------------------------------------------------------
 
@@ -289,13 +283,7 @@ CREATE TABLE `livros` (
 --
 
 INSERT INTO `livros` (`id`, `codigo`, `titulo`, `subtitulo`, `autor`, `ano`, `editora`, `edicao`, `categoria`, `foto`, `local`, `status`, `obs`, `data_cad`, `emprestimos`) VALUES
-(2, '1', 'Curso de C#', 'Programando MVC', 'Hugo Vasconcelos', 2022, 1, 'Primeira Edição', 7, '28-02-2023-18-10-24-icone.png', 3, 'Disponível', 'aaaaaa', '2023-02-28', 10),
-(6, '3', 'Programador PHP', 'Tudo em PHP', 'Hugo Vasconcelos', 2021, 1, 'Primeira Edição', 7, '28-02-2023-17-45-23-logo.jpg', 2, 'Disponível', '', '2023-02-28', 9),
-(7, '4', 'Romance X', 'Romance', 'Teste', 2000, 2, 'Primeira Edição', 2, 'sem-foto.jpg', 4, 'Disponível', '', '2023-02-28', 6),
-(41, '5', 'Ficção Cientifica', 'Fim do Mundo', 'Teste', 2000, 1, 'Primeira Edição', 4, 'sem-foto.jpg', 3, 'Emprestado', '', '2023-03-07', 1),
-(42, '6', 'Turma da Mônica', 'Gibi Compleeto', 'Ziraldo', 2005, 2, 'Segunda Edição', 1, 'sem-foto.jpg', 3, 'Disponível', '', '2023-03-07', 2),
-(43, '7', 'Turma da Mônica', 'Edição Especial', 'Ziraldo', 2006, 2, 'Especial', 1, 'sem-foto.jpg', 3, 'Disponível', '', '2023-03-07', NULL),
-(44, '8', 'Curso de Javascript', 'Jquery na Prática', 'Hugo Vasconcelos', 2012, 3, 'Primeira Edição', 8, 'sem-foto.jpg', 4, 'Disponível', '', '2023-03-07', 1);
+(3, '12345', 'harry potter', 'pedras filosofal', 'j.k rowling', 2000, 2, 'HP', 1, '03-08-2023-11-30-56-Captura-de-tela-2023-08-01-080746.png', 2, 'Disponível', 'a', '2023-08-03', 1);
 
 -- --------------------------------------------------------
 
@@ -343,9 +331,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `senha_crip`, `nivel`, `ativo`, `telefone`, `endereco`, `foto`, `data`) VALUES
-(1, 'Hugo Vasconcelos', 'contato@hugocursos.com.br', '123', '202cb962ac59075b964b07152d234b70', 'Administrador', 'Sim', '(31) 97527-5087', 'fsafa', '27-02-2023-20-51-41-04-05-2022-14-26-43-eu.jpeg', '2023-02-27'),
-(19, 'Gerente Teste', 'gerente@hotmail.com', '123', '202cb962ac59075b964b07152d234b70', 'Gerente', 'Sim', '(55) 55555-5555', '', 'sem-foto.jpg', '2023-02-28'),
-(23, 'dafdf', 'aluno2@hotmail.com', '123', '202cb962ac59075b964b07152d234b70', 'Administrador', 'Sim', '(31) 97527-5084', '', 'sem-foto.jpg', '2023-03-07');
+(1, 'Teste', 'teste@gmail.com', '123', '202cb962ac59075b964b07152d234b70', 'Administrador', 'Sim', '(47) 99999-999', 'fsafa', '03-08-2023-08-19-21-Captura-de-tela-2023-08-01-080746.png', '2023-02-27'),
+(2, 'Pedro', 'pedrox@teste.com', '123', '202cb962ac59075b964b07152d234b70', 'Bibliotecário', 'Sim', '(99) 99999-9999', 'Rua Mato Grosso', 'sem-foto.jpg', '2023-08-10');
 
 -- --------------------------------------------------------
 
@@ -367,158 +354,145 @@ INSERT INTO `usuarios_permissoes` (`id`, `usuario`, `permissao`) VALUES
 (49, 19, 2);
 
 --
--- Índices para tabelas despejadas
+-- Indexes for dumped tables
 --
 
 --
--- Índices para tabela `acessos`
+-- Indexes for table `acessos`
 --
 ALTER TABLE `acessos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `cargos`
+-- Indexes for table `cargos`
 --
 ALTER TABLE `cargos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `categorias`
+-- Indexes for table `categorias`
 --
 ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `config`
+-- Indexes for table `config`
 --
 ALTER TABLE `config`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `editoras`
+-- Indexes for table `editoras`
 --
 ALTER TABLE `editoras`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `emprestimos`
+-- Indexes for table `emprestimos`
 --
 ALTER TABLE `emprestimos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `grupos`
+-- Indexes for table `grupos`
 --
 ALTER TABLE `grupos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `leitores`
+-- Indexes for table `leitores`
 --
 ALTER TABLE `leitores`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `livros`
+-- Indexes for table `livros`
 --
 ALTER TABLE `livros`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `locais`
+-- Indexes for table `locais`
 --
 ALTER TABLE `locais`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `usuarios_permissoes`
+-- Indexes for table `usuarios_permissoes`
 --
 ALTER TABLE `usuarios_permissoes`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de tabela `acessos`
+-- AUTO_INCREMENT for table `acessos`
 --
 ALTER TABLE `acessos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
 --
--- AUTO_INCREMENT de tabela `cargos`
+-- AUTO_INCREMENT for table `cargos`
 --
 ALTER TABLE `cargos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT de tabela `categorias`
+-- AUTO_INCREMENT for table `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT de tabela `config`
+-- AUTO_INCREMENT for table `config`
 --
 ALTER TABLE `config`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
--- AUTO_INCREMENT de tabela `editoras`
+-- AUTO_INCREMENT for table `editoras`
 --
 ALTER TABLE `editoras`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT de tabela `emprestimos`
+-- AUTO_INCREMENT for table `emprestimos`
 --
 ALTER TABLE `emprestimos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 --
--- AUTO_INCREMENT de tabela `grupos`
+-- AUTO_INCREMENT for table `grupos`
 --
 ALTER TABLE `grupos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT de tabela `leitores`
+-- AUTO_INCREMENT for table `leitores`
 --
 ALTER TABLE `leitores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT de tabela `livros`
+-- AUTO_INCREMENT for table `livros`
 --
 ALTER TABLE `livros`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT de tabela `locais`
+-- AUTO_INCREMENT for table `locais`
 --
 ALTER TABLE `locais`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT de tabela `usuarios`
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT de tabela `usuarios_permissoes`
+-- AUTO_INCREMENT for table `usuarios_permissoes`
 --
 ALTER TABLE `usuarios_permissoes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
-COMMIT;
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
